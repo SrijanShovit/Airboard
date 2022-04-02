@@ -2,23 +2,24 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href="/stylesheets/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <div class="app">
         <div class="controls">
-            <div class="title"> Sketch </div>
-            <div class="type">
+            <!-- <div class="title"> Sketch </div>
+            <input class="type">
                 <input type="radio" name="pen-type" id="pen-brush">
                 <label for="pen-brush">
                     <i class="fa fa-pen-brush"></i>
                 </label>
-            </div>
+            </div> --> 
 
             <div class="size">
                 <label for="pen-size">Size</label>
-                <input type="range" id="pen-size" min="1" max="50"/>
+                <input type="range" id="pen-size" min="1" max="10"/>
             </div>
 
             <div class="color">
@@ -27,13 +28,14 @@
             </div>
 
             <div class="actions">
-                <button id="reset-canvas">Canvas</button>
+                <button id="reset-canvas">Reset</button>
                 <button id="save-canvas">Save</button>
             </div>
 
         </div>
-        <div class="canvas-wrapper"></div>
+        <div id="canvas-wrapper"></div>
     </div>
     <p>Welcome to <%= title %></p>
   </body>
+  <script defer src="/javascripts/index.js"></script>
 </html>
