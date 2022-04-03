@@ -16,7 +16,7 @@ function mouseDragged(){
     stroke(color);
     if(type == "pencil"){
         strokeWeight(size)
-        line(pmouseX,pmouseY,mouseX,mouseY);
+        line(pmouseX=0,pmouseY=0,mouseX=10,mouseY=10);
     }
 }
 

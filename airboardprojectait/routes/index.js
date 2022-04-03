@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const router = require('express').Router()
+//importing middleware
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', ensureGuest ,(req, res) => {
+    res.render('login')
+  })
 
-module.exports = router;
+router.get("/log",ensureAuth, async(req,res)=>{
+    res.render('index',{userinfo:req.user})
+})
+module.exports=router;
