@@ -74,4 +74,7 @@ app.get("/login",(req, res) => {
   res.render("login",{apiurl:process.env.API_URL})
 })
 
+app.get("/session/:session_id",(req,res) => {
+  res.render("room", {roomId:req.params.session_id, title:"AirBoard", ws_url:process.env.WS_URL+"/ws/board/"})
+})
 app.listen(3300)
