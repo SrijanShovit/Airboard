@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
   // res.render("home")s
 })
 app.get("/teams/:team_id",(req,res) =>{
-  res.render("team_page");
+  res.render("team_page", {apiurl:process.env.API_URL, team_id:req.params.team_id});
 
 })
 app.get("/signup",(req, res) => {

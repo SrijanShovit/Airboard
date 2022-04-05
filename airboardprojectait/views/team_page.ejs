@@ -10,63 +10,65 @@
 <body>
     
     <section class="text-gray-600 body-font overflow-hidden" style="user-select: auto;">
-        <div class="container px-5 py-24 mx-auto" style="user-select: auto;">
-    <div class="-my-8 divide-y-2 divide-gray-100" style="user-select: auto;">
-      <div class="py-8 flex flex-wrap md:flex-nowrap" style="user-select: auto;">
-        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col" style="user-select: auto;">
-          <span class="font-semibold title-font text-gray-700" style="user-select: auto;">CATEGORY</span>
-          <span class="mt-1 text-gray-500 text-sm" style="user-select: auto;">12 Jun 2019</span>
-        </div>
-        <div class="md:flex-grow" style="user-select: auto;">
-          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2" style="user-select: auto;">Bitters hashtag waistcoat fashion axe chia unicorn</h2>
-          <p class="leading-relaxed" style="user-select: auto;">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-          <a class="text-indigo-500 inline-flex items-center mt-4" style="user-select: auto;">Learn More
-              <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="user-select: auto;">
-              <path d="M5 12h14" style="user-select: auto;"></path>
-              <path d="M12 5l7 7-7 7" style="user-select: auto;"></path>
-            </svg>
-          </a>
-        </div>
-    </div>
-      <div class="py-8 flex flex-wrap md:flex-nowrap" style="user-select: auto;">
-        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col" style="user-select: auto;">
-            <span class="font-semibold title-font text-gray-700" style="user-select: auto;">CATEGORY</span>
-            <span class="mt-1 text-gray-500 text-sm" style="user-select: auto;">12 Jun 2019</span>
-        </div>
-        <div class="md:flex-grow" style="user-select: auto;">
-            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2" style="user-select: auto;">Meditation bushwick direct trade taxidermy shaman</h2>
-            <p class="leading-relaxed" style="user-select: auto;">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-            <a class="text-indigo-500 inline-flex items-center mt-4" style="user-select: auto;">Learn More
-            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="user-select: auto;">
-                <path d="M5 12h14" style="user-select: auto;"></path>
-                <path d="M12 5l7 7-7 7" style="user-select: auto;"></path>
-            </svg>
-        </a>
-    </div>
-      </div>
-      <div class="py-8 flex flex-wrap md:flex-nowrap" style="user-select: auto;">
-          <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col" style="user-select: auto;">
-              <span class="font-semibold title-font text-gray-700" style="user-select: auto;">CATEGORY</span>
-              <span class="text-sm text-gray-500" style="user-select: auto;">12 Jun 2019</span>
-            </div>
-        <div class="md:flex-grow" style="user-select: auto;">
-          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2" style="user-select: auto;">Woke master cleanse drinking vinegar salvia</h2>
-          <p class="leading-relaxed" style="user-select: auto;">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-          <a class="text-indigo-500 inline-flex items-center mt-4" style="user-select: auto;">Learn More
-              <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="user-select: auto;">
-              <path d="M5 12h14" style="user-select: auto;"></path>
-              <path d="M12 5l7 7-7 7" style="user-select: auto;"></path>
-            </svg>
-        </a>
-        </div>
-      </div>
+        <div class="container px-5 py-24 mx-auto" style="user-select: auto;" id="content">
     </div>
   </div>
 </section>
-<div class="container my-5 align-content-lg-end">
 
-    <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="user-select: auto;">Button</button>
-</div>
       </div>
+
+
+
+
+
+
+
+
+      <script>
+        var api_url = "<%= apiurl%>/api/teams/<%= team_id%>"
+         fetch(api_url,{
+                method:'get',
+                headers:{"Authorization":`Token ${document.cookie.valueOf('authtoken').split("authtoken=")[1].split(";")[0]}`}
+                
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                sessions = data.sessions
+                var par = document.getElementById("content")
+
+                for (var i = 0; i < sessions.length; i++) {
+                    var el = `
+                    <div class="py-8 flex flex-wrap md:flex-nowrap" style="user-select: auto;">
+                        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col" style="user-select: auto;">
+                            <span class="font-semibold title-font text-gray-700" style="user-select: auto;">${sessions[i].created_at.toString().substring(0,10)}</span>
+                            <span class="text-sm text-gray-500" style="user-select: auto;"></span>
+                          </div>
+                      <div class="md:flex-grow" style="user-select: auto;">
+                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2" style="user-select: auto;">${sessions[i].session_name}</h2>
+                        <p class="leading-relaxed" style="user-select: auto;">Started at : ${sessions[i].start_time}</p>
+                        <p class="leading-relaxed" style="user-select: auto;">Ended at : ${sessions[i].end_time}</p>
+                       
+                        <a href="<%= apiurl%>/media/${sessions[i].board}">Notes</a>
+                        <a class="text-indigo-500 inline-flex items-center mt-4" style="user-select: auto;">Learn More
+                            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="user-select: auto;">
+                            <path d="M5 12h14" style="user-select: auto;"></path>
+                            <path d="M12 5l7 7-7 7" style="user-select: auto;"></path>
+                          </svg>
+                      </a>
+                      </div>
+                    </div>
+                    `
+
+                    par.innerHTML += el
+                }
+            })
+
+        </script>
+
+        <div class="container my-5 align-content-lg-end">
+
+            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" style="user-select: auto;">Button</button>
+        </div>
     </body>
     </html>

@@ -85,11 +85,6 @@
             })
             .then(res => res.json())
             .then(data => {
-                const html = data.map(team =>{
-                    return `<p>Team: ${team.team_name}</p>`
-                })
-                console.log(html)
-                console.log(data)
                 teams = data
                 var par = document.getElementById("content")
 
