@@ -66,6 +66,9 @@ app.get("/teams/:team_id",(req,res) =>{
 app.get("/signup",(req, res) => {
   res.render("signup",{apiurl:process.env.API_URL})
 })
+app.get("/teams1",(req, res) => {
+  res.render("teams1",{apiurl:process.env.API_URL})
+})
 
 app.get("/login",(req, res) => {
   res.render("login",{apiurl:process.env.API_URL})
