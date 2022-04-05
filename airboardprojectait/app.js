@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
   // res.render("paint",{title:"Airboard"})
   // res.render("track")
   // res.render("home")s
-  res.render("teams");
+  res.render("teams",{apiurl:process.env.API_URL});
 })
 app.get("/signup",(req, res) => {
   res.render("signup",{apiurl:process.env.API_URL})
