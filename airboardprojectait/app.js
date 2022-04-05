@@ -45,10 +45,23 @@ app.use(express.static(__dirname + '/public'));
 // app.listen(PORT,console.log(`listening at ${PORT}`))
 
 app.get("/", (req, res) => {
-  // res.render("paint",{title:"Airboard"})
+//   var api_url = process.env.API_URL
+//   const response = await fetch(api_url,{
+//     method:'get',
+//     headers:{"Authorization":`Token ${document.cookie.valueOf('authtoken').split("authtoken=")[1].split(";")[0]}`}
+// })
+//   console.log(response);
+    // .then(res => res.json())
+    // .then(data => {
+    //   res.render("teams",{teams:data});
+    // })
+  res.render("teams",{apiurl:process.env.API_URL})
   // res.render("track")
   // res.render("home")s
-  res.render("teams",{apiurl:process.env.API_URL});
+})
+app.get("/teams/:team_id",(req,res) =>{
+  res.render("team_page");
+
 })
 app.get("/signup",(req, res) => {
   res.render("signup",{apiurl:process.env.API_URL})
